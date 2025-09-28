@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "inkscapeFigures"
+version = "0.1.0"
+description = ""
+authors = ["Logan Name <logan@loganreed.org>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+click = "^8.3.0"
+inotify = "^0.2.12"
+pyperclip = "^1.11.0"
+appdirs = "^1.4.4"
+daemonize = "^2.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
