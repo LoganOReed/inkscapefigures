@@ -52,7 +52,7 @@ def import_file(name, path):
 
 # Load user config
 
-user_dir = Path(user_config_dir("inkscapefigures", "Castel"))
+user_dir = Path(user_config_dir("inkscapefigures", "occam"))
 
 if not user_dir.is_dir():
     user_dir.mkdir()
@@ -68,6 +68,7 @@ if not template.is_file():
     source = str(Path(__file__).parent / 'template.svg')
     destination = str(template)
     copy(source, destination)
+    Path(destination).chmod(0o644)
 
 if config.exists():
     config_module = import_file('config', config)
