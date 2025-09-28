@@ -41,7 +41,7 @@
       in
       {
         packages.default = pkgs.myapp;
-        overlays = poetry2nix.overlay;
+        overlays = (final: prev: poetry2nix.overlay final prev);
         devShells = {
           # Shell for app dependencies.
           #
