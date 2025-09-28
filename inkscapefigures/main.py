@@ -68,7 +68,7 @@ if not template.is_file():
     source = str(Path(__file__).parent / 'template.svg')
     destination = str(template)
     copy(source, destination)
-    Path(destination).chmod(666)
+    Path(destination).chmod(0o664)
 
 if config.exists():
     config_module = import_file('config', config)
@@ -275,7 +275,7 @@ def create(title, root):
         return
 
     copy(str(template), str(figure_path))
-    Path(str(figure_path)).chmod(666)
+    Path(str(figure_path)).chmod(0o664)
     #TODO:
     add_root(figures)
     inkscape(figure_path)
