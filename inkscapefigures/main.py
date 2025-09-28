@@ -19,43 +19,26 @@ logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 log = logging.getLogger('inkscapefigures')
 
 def inkscape(path):
-    """Launch Inkscape with proper error handling"""
     try:
-        # Ensure the file is readable
         if not os.access(path, os.R_OK):
             log.error(f"Cannot read file: {path}")
             return False
-            
-        log.info(f"Opening Inkscape with: {path}")
-        
+        log.debug(f"Opening Inkscape with: {path}")
+
         with warnings.catch_warnings():
             # leaving a subprocess running after interpreter exit raises a
             # warning in Python3.7+
             warnings.simplefilter("ignore", ResourceWarning)
-            
-            # Use subprocess.run for better error handling
-            result = subprocess.run(['inkscape', str(path)], 
-                                  capture_output=True, 
-                                  text=True,
-                                  timeout=10)  # 10 second timeout for startup
-            
-            if result.returncode != 0:
-                log.error(f"Inkscape failed to start. Return code: {result.returncode}")
-                log.error(f"Stderr: {result.stderr}")
-                return False
-            else:
-                log.info("Inkscape started successfully")
-                return True
-    except subprocess.TimeoutExpired:
-        log.info("Inkscape started (timeout reached, which is normal)")
-        return True
+            subprocess.Popen(['inkscape', str(path)])
+
+            log.debug("Inkscape launched successfully")
+            return True
     except FileNotFoundError:
-        log.error("Inkscape not found. Please ensure Inkscape is installed and in PATH")
+        log.error("Inkscape not found. Is it in your PATH?")
         return False
     except Exception as e:
-        log.error(f"Error starting Inkscape: {e}")
+        log.error(f"Cannot Start Inkscape: {e}")
         return False
-
 
 def indent(text, indentation=0):
     lines = text.split('\n');
