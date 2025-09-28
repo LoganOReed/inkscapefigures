@@ -15,7 +15,7 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         # see https://github.com/nix-community/poetry2nix/tree/master#api for more functions and examples.
-        myapp = { poetry2nix, lib }: poetry2nix.mkPoetryApplication {
+        inkscapefigures = { poetry2nix, lib }: poetry2nix.mkPoetryApplication {
           projectDir = self;
           overrides = poetry2nix.overrides.withDefaults (final: super:
             lib.mapAttrs
@@ -34,13 +34,13 @@
           overlays = [
             poetry2nix.overlays.default
             (final: _: {
-              myapp = final.callPackage myapp { };
+              inkscapefigures = final.callPackage inkscapefigures { };
             })
           ];
         };
       in
       {
-        packages.default = pkgs.myapp;
+        packages.default = pkgs.inkscapefigures;
         devShells = {
           # Shell for app dependencies.
           #
@@ -48,7 +48,7 @@
           #
           # Use this shell for developing your app.
           default = pkgs.mkShell {
-            inputsFrom = [ pkgs.myapp ];
+            inputsFrom = [ pkgs.inkscapefigures ];
           };
 
           # Shell for poetry.
@@ -62,9 +62,7 @@
         };
         legacyPackages = pkgs;
 
-        overlays.default = final: prev: {
-          inkscapefigures = myapp;
-        };
+        
       }
     );
 }
