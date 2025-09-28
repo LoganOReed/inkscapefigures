@@ -157,14 +157,14 @@ def maybe_recompile_figure(filepath):
     # Right-pad the array with zeros (so [1, 1] becomes [1, 1, 0])
     # inkscape_version_number= inkscape_version_number + [0] * (3 - len(inkscape_version_number))
 
-        command = [
-            'inkscape', filepath,
-            '--export-area-page',
-            '--export-dpi', '300',
-            '--export-type=pdf',
-            '--export-latex',
-            '--export-filename', pdf_path
-            ]
+    command = [
+        'inkscape', filepath,
+        '--export-area-page',
+        '--export-dpi', '300',
+        '--export-type=pdf',
+        '--export-latex',
+        '--export-filename', pdf_path
+        ]
 
     log.debug('Running command:')
     log.debug(textwrap.indent(' '.join(str(e) for e in command), '    '))
