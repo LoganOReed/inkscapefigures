@@ -46,6 +46,16 @@ def inkscape(path):
             else:
                 log.info("Inkscape started successfully")
                 return True
+    except subprocess.TimeoutExpired:
+        log.info("Inkscape started (timeout reached, which is normal)")
+        return True
+    except FileNotFoundError:
+        log.error("Inkscape not found. Please ensure Inkscape is installed and in PATH")
+        return False
+    except Exception as e:
+        log.error(f"Error starting Inkscape: {e}")
+        return False
+
 
 def indent(text, indentation=0):
     lines = text.split('\n');
