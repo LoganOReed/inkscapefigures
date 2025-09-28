@@ -1,5 +1,5 @@
 {
-  description = "Application packaged using poetry2nix";
+  description = "Gilles Castel's Inkscape-Figures as a Nix Flake";
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
@@ -61,6 +61,10 @@
           };
         };
         legacyPackages = pkgs;
+
+        overlay = final: prev: {
+          inkscapefigures = myapp;
+        };
       }
     );
 }

@@ -16,7 +16,7 @@ import pyperclip
 from appdirs import user_config_dir
 
 logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
-log = logging.getLogger('inkscape-figures')
+log = logging.getLogger('inkscapefigures')
 
 def inkscape(path):
     with warnings.catch_warnings():
@@ -52,7 +52,7 @@ def import_file(name, path):
 
 # Load user config
 
-user_dir = Path(user_config_dir("inkscape-figures", "Castel"))
+user_dir = Path(user_config_dir("inkscapefigures", "Castel"))
 
 if not user_dir.is_dir():
     user_dir.mkdir()
@@ -105,8 +105,8 @@ def watch(daemon):
         watcher_cmd = watch_daemon_fswatch
 
     if daemon:
-        daemon = Daemonize(app='inkscape-figures',
-                           pid='/tmp/inkscape-figures.pid',
+        daemon = Daemonize(app='inkscapefigures',
+                           pid='/tmp/inkscapefigures.pid',
                            action=watcher_cmd)
         daemon.start()
         log.info("Watching figures.")

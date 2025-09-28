@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "inkscapeFigures"
-version = "0.1.0"
+name = "inkscapefigures"
+version = "1.0.8"
 description = ""
 authors = ["Logan Name <logan@loganreed.org>"]
 license = "MIT"
@@ -18,3 +18,6 @@ daemonize = "^2.5.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+inkscapeFigures = "inkscapefigures.main:cli"
