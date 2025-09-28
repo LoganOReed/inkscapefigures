@@ -275,6 +275,8 @@ def create(title, root):
         return
 
     copy(str(template), str(figure_path))
+    Path(str(figure_path)).chmod(666)
+    #TODO:
     add_root(figures)
     inkscape(figure_path)
 
