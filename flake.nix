@@ -62,7 +62,7 @@
         };
         legacyPackages = pkgs;
 
-        overlay = final: prev: {
+        overlays.default = final: prev: {
           inkscapefigures = myapp;
         };
       }
