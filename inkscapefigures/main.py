@@ -68,7 +68,7 @@ if not template.is_file():
     source = str(Path(__file__).parent / 'template.svg')
     destination = str(template)
     copy(source, destination)
-    Path(destination).chmod(0o644)
+    Path(destination).chmod(666)
 
 if config.exists():
     config_module = import_file('config', config)
