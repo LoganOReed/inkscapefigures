@@ -20,4 +20,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-inkscapeFigures = "inkscapefigures.main:cli"
+inkscapefigures = "inkscapefigures.main:cli"
